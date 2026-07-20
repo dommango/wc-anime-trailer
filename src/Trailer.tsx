@@ -3,6 +3,7 @@ import { AbsoluteFill, Audio, Sequence, staticFile } from 'remotion';
 import { SCENES } from './lib/timing';
 import { Scene1 } from './scenes/Scene1';
 import { Scene2 } from './scenes/Scene2';
+import { Scene3 } from './scenes/Scene3';
 
 export const Trailer: React.FC = () => (
   <AbsoluteFill style={{ backgroundColor: '#000' }}>
@@ -11,6 +12,9 @@ export const Trailer: React.FC = () => (
     </Sequence>
     <Sequence from={SCENES.S2.from} durationInFrames={SCENES.S2.duration}>
       <Scene2 />
+    </Sequence>
+    <Sequence from={SCENES.S3.from} durationInFrames={SCENES.S3.duration}>
+      <Scene3 />
     </Sequence>
     <Audio src={staticFile('score.wav')} />
   </AbsoluteFill>
