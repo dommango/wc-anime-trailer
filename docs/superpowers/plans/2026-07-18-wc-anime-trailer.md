@@ -1102,7 +1102,7 @@ git add src/fx/ src/scenes/ src/Trailer.tsx && git commit -m "feat: atmosphere f
 - Consumes: `SEPIA` (palette), `mulberry32`/`progress`/`easeInOutCubic`/`lerp` (timing), `CameraRig`/`SmokeField`/`KineticText` (fx).
 - Produces: `<SepiaPhoto {alive,wind,width?}>` — reused in Scene3 (shatter) and Scene5 (flashback). `<Scene2>`.
 
-- [ ] **Step 1: Write SepiaPhoto**
+- [x] **Step 1: Write SepiaPhoto**
 
 `src/fx/SepiaPhoto.tsx`:
 ```tsx
@@ -1206,7 +1206,7 @@ export const SepiaPhoto: React.FC<{ alive: number; wind: number; width?: number 
 };
 ```
 
-- [ ] **Step 2: Write Scene 2**
+- [x] **Step 2: Write Scene 2**
 
 `src/scenes/Scene2.tsx`:
 ```tsx
@@ -1251,7 +1251,7 @@ export const Scene2: React.FC = () => {
 };
 ```
 
-- [ ] **Step 3: Wire Trailer**
+- [x] **Step 3: Wire Trailer**
 
 `src/Trailer.tsx`:
 ```tsx
@@ -1274,7 +1274,7 @@ export const Trailer: React.FC = () => (
 );
 ```
 
-- [ ] **Step 4: Render stills and inspect**
+- [x] **Step 4: Render stills and inspect**
 
 Run:
 ```bash
@@ -1284,7 +1284,7 @@ npx remotion still Trailer out/check/s2-f299.png --frame=299
 ```
 Expected: three PNGs. Inspect: sepia photo centered on dark warm void; eyes open + warm glow by f220; wind streaks crossing at f299; narration legible. Fix and re-render as needed.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/fx/SepiaPhoto.tsx src/scenes/Scene2.tsx src/Trailer.tsx && git commit -m "feat: scene 2 sepia photograph that comes alive"
@@ -1302,7 +1302,7 @@ git add src/fx/SepiaPhoto.tsx src/scenes/Scene2.tsx src/Trailer.tsx && git commi
 - Consumes: `makeShards`/`makeBolt`/`makeCracks`/`makeParticles` (particles), `GALAXY_AURA`/`SOLAR_AURA`/`SEPIA` (palette), `progress`/`easeOutCubic`/`mulberry32` (timing), `SepiaPhoto` (fx).
 - Produces: `Pose` type + `<PlayerFigure {pose,kit,rim,flip?,size?}>` (`kit: 'argentina'|'spain'`), `<Aura {variant:'galaxy'|'solar',cx,cy,radius?,intensity,seed?}>`, `<Shockwave {x,y,progress,color?,maxR?}>`, `<GroundCracks {x,y,progress,seed?,color?}>`, `<ShatterShards {progress,seed?,glow?}>`, `<Ball {x,y,scale?,glow?}>`, `<Scene3>`. Scene4/5 reuse PlayerFigure, Aura, Shockwave, GroundCracks, Ball.
 
-- [ ] **Step 1: Write the FX components**
+- [x] **Step 1: Write the FX components**
 
 `src/fx/PlayerFigure.tsx`:
 ```tsx
@@ -1656,7 +1656,7 @@ export const Ball: React.FC<{ x: number; y: number; scale?: number; glow?: strin
 );
 ```
 
-- [ ] **Step 2: Write Scene 3**
+- [x] **Step 2: Write Scene 3**
 
 `src/scenes/Scene3.tsx`:
 ```tsx
@@ -1745,7 +1745,7 @@ export const Scene3: React.FC = () => {
 };
 ```
 
-- [ ] **Step 3: Wire Trailer**
+- [x] **Step 3: Wire Trailer**
 
 `src/Trailer.tsx`:
 ```tsx
@@ -1772,7 +1772,7 @@ export const Trailer: React.FC = () => (
 );
 ```
 
-- [ ] **Step 4: Render stills and inspect**
+- [x] **Step 4: Render stills and inspect**
 
 Run:
 ```bash
@@ -1783,7 +1783,7 @@ npx remotion still Trailer out/check/s3-f539.png --frame=539
 ```
 Expected: four PNGs. Inspect: f300 photo intact + flash; f320 shards mid-flight; f420 both figures with auras (blue galaxy left, gold/crimson lightning right), floating pitch + Earth horizon; f539 shockwave/cracks visible, ball levitating center. Fix and re-render as needed.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/fx/ src/scenes/Scene3.tsx src/Trailer.tsx && git commit -m "feat: scene 3 shatter into floating battlefield with aura duel"
@@ -1801,7 +1801,7 @@ git add src/fx/ src/scenes/Scene3.tsx src/Trailer.tsx && git commit -m "feat: sc
 - Consumes: `PlayerFigure`/`Pose`, `Aura`, `Ball`, `Shockwave`, `GroundCracks`, `SkyGradient`, `SmokeField`, `CameraRig` (fx); `lerp`/`progress`/`easeInOutCubic`/`mulberry32`/`shake` (timing).
 - Produces: `<SpeedLines {intensity,seed?,color?}>`, `<Afterimages {xs,y,pose,kit,rim}>`, `<Scene4>`.
 
-- [ ] **Step 1: Write the FX components**
+- [x] **Step 1: Write the FX components**
 
 `src/fx/SpeedLines.tsx`:
 ```tsx
@@ -1887,7 +1887,7 @@ export const Afterimages: React.FC<{
 );
 ```
 
-- [ ] **Step 2: Write Scene 4**
+- [x] **Step 2: Write Scene 4**
 
 `src/scenes/Scene4.tsx`:
 ```tsx
@@ -1974,7 +1974,7 @@ export const Scene4: React.FC = () => {
 };
 ```
 
-- [ ] **Step 3: Wire Trailer**
+- [x] **Step 3: Wire Trailer**
 
 `src/Trailer.tsx`:
 ```tsx
@@ -2005,7 +2005,7 @@ export const Trailer: React.FC = () => (
 );
 ```
 
-- [ ] **Step 4: Render stills and inspect**
+- [x] **Step 4: Render stills and inspect**
 
 Run:
 ```bash
@@ -2015,7 +2015,7 @@ npx remotion still Trailer out/check/s4-f749.png --frame=749
 ```
 Expected: three PNGs. Inspect: f540 still smoky-orange with duel beginning; f645 mid-clearing, afterimage trail behind left figure, speed lines + shockwave on a beat; f749 nearly clear blue sky, figures close to center, cracks under right figure. Fix and re-render as needed.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/fx/SpeedLines.tsx src/fx/Afterimages.tsx src/scenes/Scene4.tsx src/Trailer.tsx && git commit -m "feat: scene 4 duel with afterimages, speed lines, clearing sky"
@@ -2035,7 +2035,7 @@ git add src/fx/SpeedLines.tsx src/fx/Afterimages.tsx src/scenes/Scene4.tsx src/T
 
 **Scene beat map (local frames, 150 total):** 0–39 slow-mo stillness; 40–42 sepia flashback (3 frames); 43–57 mutual nod; 58–66 lunge toward ball — Spain a half-step quicker; 67–68 Spain's strike, white flash peak; 69–94 flash decays onto clear blue sky: ball launched skyward, galaxy aura dimmed, solar aura flooding; 74–133 final narration (3 lines); 118–135 dim to black; 128–149 title cards (incl. SPAIN — WORLD CHAMPIONS).
 
-- [ ] **Step 1: Write Scene 5**
+- [x] **Step 1: Write Scene 5**
 
 `src/scenes/Scene5.tsx`:
 ```tsx
@@ -2129,7 +2129,7 @@ export const Scene5: React.FC = () => {
 };
 ```
 
-- [ ] **Step 2: Wire Trailer (complete timeline)**
+- [x] **Step 2: Wire Trailer (complete timeline)**
 
 `src/Trailer.tsx`:
 ```tsx
@@ -2164,7 +2164,7 @@ export const Trailer: React.FC = () => (
 );
 ```
 
-- [ ] **Step 3: Render stills and inspect**
+- [x] **Step 3: Render stills and inspect**
 
 Run:
 ```bash
@@ -2174,9 +2174,9 @@ npx remotion still Trailer out/check/s5-f820.png --frame=820
 npx remotion still Trailer out/check/s5-f860.png --frame=860
 npx remotion still Trailer out/check/s5-f895.png --frame=895
 ```
-Expected: five PNGs. Inspect: f770 slow-mo standoff, ball hanging center; f791 sepia flashback frame; f820 white flash decaying — Spain's figure at the ball, Argentina a half-step short, ball launched skyward; f860 clear blue sky + final narration ("Destiny wears red."), galaxy aura dimmed, solar aura dominant; f895 title cards on black incl. SPAIN — WORLD CHAMPIONS. Fix and re-render as needed.
+Expected: five PNGs. Inspect: f770 slow-mo standoff, ball hanging center; f791 sepia flashback frame; f820 white flash decaying — Spain's figure at the ball, Argentina a half-step short, ball launched skyward (frame is ~96% white; check staging at f825 if needed); f860 clear blue sky + final narration ("One last dance." — "Destiny wears red." starts at f867), galaxy aura dimmed, solar aura dominant; f895 title cards on black incl. SPAIN — WORLD CHAMPIONS. Fix and re-render as needed.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/scenes/Scene5.tsx src/Trailer.tsx && git commit -m "feat: scene 5 slow-mo, nod, white flash, title cards"
