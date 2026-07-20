@@ -61,7 +61,7 @@ projects/wc-anime-trailer/
 - Consumes: nothing.
 - Produces: composition id `Trailer` (900 frames, 30 fps, 1920×1080) that later tasks register scenes into; npm scripts `studio`, `render`, `score`, `test`.
 
-- [ ] **Step 1: Write project files**
+- [x] **Step 1: Write project files**
 
 `package.json`:
 ```json
@@ -154,17 +154,17 @@ import { AbsoluteFill } from 'remotion';
 export const Trailer: React.FC = () => <AbsoluteFill style={{ backgroundColor: '#000' }} />;
 ```
 
-- [ ] **Step 2: Install dependencies**
+- [x] **Step 2: Install dependencies**
 
 Run: `cd /home/dom/projects/wc-anime-trailer && npm install`
 Expected: `added N packages`, exit 0.
 
-- [ ] **Step 3: Ensure headless browser + verify composition registers**
+- [x] **Step 3: Ensure headless browser + verify composition registers**
 
 Run: `npx remotion browser ensure && npx remotion compositions`
 Expected: output lists a composition named `Trailer` (900 frames, 1920x1080, 30fps).
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git init && git add -A && git commit -m "chore: scaffold remotion project"
@@ -183,7 +183,7 @@ git init && git add -A && git commit -m "chore: scaffold remotion project"
 - Consumes: nothing.
 - Produces: `FPS`, `DURATION_FRAMES`, `SCENES` (`{S1..S5: {from, duration}}`), `clamp01(v)`, `lerp(a,b,t)`, `easeInOutCubic(t)`, `easeOutCubic(t)`, `progress(frame,from,duration)`, `mulberry32(seed)`, `shake(frame,intensity,seed?)` — imported by every scene/fx component and by `src/audio/synth.ts`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/lib/timing.test.ts`:
 ```ts
@@ -254,12 +254,12 @@ describe('shake', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npm test`
 Expected: FAIL — module `./timing` cannot be resolved / exports not found.
 
-- [ ] **Step 3: Implement `src/lib/timing.ts` and swap `src/Root.tsx` to constants**
+- [x] **Step 3: Implement `src/lib/timing.ts` and swap `src/Root.tsx` to constants**
 
 `src/lib/timing.ts`:
 ```ts
@@ -327,12 +327,12 @@ export const RemotionRoot: React.FC = () => (
 );
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npm test`
 Expected: PASS — all `timing.test.ts` tests green.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/timing.ts src/lib/timing.test.ts src/Root.tsx && git commit -m "feat: timing library with scene map, easing, seeded PRNG"
@@ -350,7 +350,7 @@ git add src/lib/timing.ts src/lib/timing.test.ts src/Root.tsx && git commit -m "
 - Consumes: `mulberry32` from `./timing`.
 - Produces: `lerpColor(a,b,t)`, palettes `SKY`, `GALAXY_AURA`, `SOLAR_AURA`, `SEPIA`; generators `makeParticles(seed,count,w,h,rMin?,rMax?) → Particle[]`, `makeShards(seed,count,w,h,glow) → Shard[]`, `makeBolt(seed,x1,y1,x2,y2,segs?) → [number,number][]`, `makeCracks(seed,x,y,count?,len?) → Crack[]`. Types `Particle`, `Shard`, `Crack`. Consumed by SmokeField, SkyGradient, ShatterShards, Aura, GroundCracks, SepiaPhoto.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/lib/particles.test.ts`:
 ```ts
@@ -416,12 +416,12 @@ describe('makeCracks', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npm test`
 Expected: FAIL — `./palette` / `./particles` cannot be resolved.
 
-- [ ] **Step 3: Implement the modules**
+- [x] **Step 3: Implement the modules**
 
 `src/lib/palette.ts`:
 ```ts
@@ -545,12 +545,12 @@ export const makeCracks = (seed: number, x: number, y: number, count = 6, len = 
 };
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npm test`
 Expected: PASS — all tests green.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/palette.ts src/lib/particles.ts src/lib/particles.test.ts && git commit -m "feat: palettes and seeded particle/shard/bolt/crack generators"
@@ -569,7 +569,7 @@ git add src/lib/palette.ts src/lib/particles.ts src/lib/particles.test.ts && git
 - Consumes: `mulberry32` from `../lib/timing`.
 - Produces: `SAMPLE_RATE` (44100), `DURATION_SEC` (30), `Stereo {left,right}`, `synthesizeScore() → Stereo`, `writeWav(buf) → Buffer`; npm script `score`. `public/score.wav` is consumed by `Trailer.tsx` via `staticFile('score.wav')`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 `src/audio/score.test.ts`:
 ```ts
@@ -619,12 +619,12 @@ describe('score synthesis', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npm test`
 Expected: FAIL — `./synth` cannot be resolved.
 
-- [ ] **Step 3: Implement the synthesizer + CLI**
+- [x] **Step 3: Implement the synthesizer + CLI**
 
 `src/audio/synth.ts`:
 ```ts
@@ -813,17 +813,17 @@ writeFileSync(out, writeWav(synthesizeScore()));
 console.log(`score written → ${out}`);
 ```
 
-- [ ] **Step 4: Run test to verify it passes**
+- [x] **Step 4: Run test to verify it passes**
 
 Run: `npm test`
 Expected: PASS — all tests green.
 
-- [ ] **Step 5: Generate the WAV and verify duration**
+- [x] **Step 5: Generate the WAV and verify duration**
 
 Run: `npm run score && ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 public/score.wav`
 Expected: `score written → …/public/score.wav`, then ffprobe prints `30.000000`.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/audio/ && git commit -m "feat: procedural 30s score synthesis (taiko, pad, Karplus-Strong plucks, risers)"
@@ -841,7 +841,7 @@ git add src/audio/ && git commit -m "feat: procedural 30s score synthesis (taiko
 - Consumes: `SKY`/`lerpColor` (palette), `makeParticles` (particles), `lerp`/`progress`/`easeInOutCubic` (timing), `SCENES` (timing).
 - Produces: `<CameraRig {scale?,x?,y?,rotate?,children}>`, `<SkyGradient {clearing,sunStrength}>`, `<SmokeField {clearing,tint?,count?,seed?,rise?}>` (`tint` is `'r,g,b'`), `<KineticText {lines:{text,at,hold}[],color?,size?,bottom?}>`, `<Scene1>`. Scene2/4/5 reuse all four fx components.
 
-- [ ] **Step 1: Write the FX components**
+- [x] **Step 1: Write the FX components**
 
 `src/fx/CameraRig.tsx`:
 ```tsx
@@ -1009,7 +1009,7 @@ export const KineticText: React.FC<{
 };
 ```
 
-- [ ] **Step 2: Write Scene 1**
+- [x] **Step 2: Write Scene 1**
 
 `src/scenes/Scene1.tsx`:
 ```tsx
@@ -1054,7 +1054,7 @@ export const Scene1: React.FC = () => {
 };
 ```
 
-- [ ] **Step 3: Wire Trailer**
+- [x] **Step 3: Wire Trailer**
 
 `src/Trailer.tsx`:
 ```tsx
@@ -1073,7 +1073,7 @@ export const Trailer: React.FC = () => (
 );
 ```
 
-- [ ] **Step 4: Render stills and inspect**
+- [x] **Step 4: Render stills and inspect**
 
 Run:
 ```bash
@@ -1082,9 +1082,9 @@ npx remotion still Trailer out/check/s1-f000.png --frame=0
 npx remotion still Trailer out/check/s1-f075.png --frame=75
 npx remotion still Trailer out/check/s1-f149.png --frame=149
 ```
-Expected: three PNGs written, exit 0. Then open each with the image viewer (ReadMediaFile) and confirm: orange smoky sky with faint sun, stadium silhouette with floodlights, drifting smoke, narration text visible at f75/f149. Fix and re-render anything broken before continuing.
+Expected: three PNGs written, exit 0. Then open each with the image viewer (ReadMediaFile) and confirm: orange smoky sky with faint sun, stadium silhouette with floodlights, drifting smoke, narration text visible at f75 (line 2's fade-out completes by f145, so f149 is a clean plate). Fix and re-render anything broken before continuing.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/fx/ src/scenes/ src/Trailer.tsx && git commit -m "feat: atmosphere fx and scene 1 (stadium under wildfire sky)"
@@ -2033,7 +2033,7 @@ git add src/fx/SpeedLines.tsx src/fx/Afterimages.tsx src/scenes/Scene4.tsx src/T
 - Consumes: `SkyGradient`, `SmokeField`, `Ball`, `PlayerFigure`, `Aura`, `SpeedLines`, `SepiaPhoto`, `KineticText` (fx); `lerp`/`progress` (timing).
 - Produces: `<Scene5>` — completes the trailer timeline.
 
-**Scene beat map (local frames, 150 total):** 0–39 slow-mo stillness; 40–42 sepia flashback (3 frames); 43–57 mutual nod; 58–66 lunge toward ball; 67–68 white flash peak; 69–94 flash decays onto clear blue sky; 74–133 final narration (3 lines); 118–135 dim to black; 128–149 title cards.
+**Scene beat map (local frames, 150 total):** 0–39 slow-mo stillness; 40–42 sepia flashback (3 frames); 43–57 mutual nod; 58–66 lunge toward ball — Spain a half-step quicker; 67–68 Spain's strike, white flash peak; 69–94 flash decays onto clear blue sky: ball launched skyward, galaxy aura dimmed, solar aura flooding; 74–133 final narration (3 lines); 118–135 dim to black; 128–149 title cards (incl. SPAIN — WORLD CHAMPIONS).
 
 - [ ] **Step 1: Write Scene 5**
 
@@ -2051,18 +2051,20 @@ import { SmokeField } from '../fx/SmokeField';
 import { SpeedLines } from '../fx/SpeedLines';
 import { lerp, progress } from '../lib/timing';
 
-/** 25–30s: slow-mo, flashback, the nod, white flash, blue sky, titles. */
+/** 25–30s: slow-mo, flashback, the nod, Spain's strike, white flash, blue sky, titles. */
 export const Scene5: React.FC = () => {
   const frame = useCurrentFrame();
   const nod = Math.sin(progress(frame, 44, 14) * Math.PI) * 6;
-  const lunge = progress(frame, 59, 8);
-  const xL = lerp(660, 880, lunge);
-  const xR = lerp(1130, 915, lunge);
+  const lunge = progress(frame, 59, 8);   // Spain — a half-step quicker
+  const lungeL = progress(frame, 59, 14); // Argentina — arrives late
+  const xL = lerp(660, 800, lungeL);      // falls short of the ball (960)
+  const xR = lerp(1130, 900, lunge);      // reaches it
   const flash = frame >= 67 && frame < 69 ? 1 : frame >= 69 ? Math.max(0, 1 - (frame - 69) / 26) : 0;
   const clearSky = progress(frame, 67, 20);
   const hazeLeft = 0.8 + 0.2 * clearSky; // faint remnants, fully gone after the flash
   const dim = progress(frame, 118, 18);
   const title = progress(frame, 128, 12);
+  const ballRise = progress(frame, 69, 12);
 
   return (
     <AbsoluteFill style={{ backgroundColor: '#04060c' }}>
@@ -2073,18 +2075,18 @@ export const Scene5: React.FC = () => {
         <ellipse cx="960" cy="820" rx="880" ry="180" fill="#1a3a24" />
       </svg>
 
-      {/* the ball hangs perfectly still */}
-      <Ball x={960} y={640 + 3 * Math.sin(frame / 8)} scale={1.35} />
+      {/* the ball hangs perfectly still — until the strike launches it skyward */}
+      <Ball x={960} y={lerp(640 + 3 * Math.sin(frame / 8), -260, ballRise)} scale={1.35} />
 
-      {/* face to face: the nod, then both explode toward the ball */}
+      {/* face to face: the nod, then both explode toward the ball — Spain gets there first */}
       <div style={{ position: 'absolute', left: xL, top: 480, transform: `translateY(${nod}px)` }}>
-        <PlayerFigure pose={lunge > 0 ? 'sprint' : 'stand'} kit="argentina" rim="#7fd0ff" size={300} />
+        <PlayerFigure pose={frame >= 69 || lungeL === 0 ? 'stand' : 'sprint'} kit="argentina" rim="#7fd0ff" size={300} />
       </div>
       <div style={{ position: 'absolute', left: xR, top: 480, transform: `translateY(${nod}px)` }}>
-        <PlayerFigure pose={lunge > 0 ? 'sprint' : 'stand'} kit="spain" rim="#ffd23f" size={300} flip />
+        <PlayerFigure pose={frame >= 69 || lunge === 0 ? 'stand' : 'sprint'} kit="spain" rim="#ffd23f" size={300} flip />
       </div>
-      <Aura variant="galaxy" cx={xL + 130} cy={650} intensity={0.8 + lunge * 0.2} seed={5} />
-      <Aura variant="solar" cx={xR + 130} cy={650} intensity={0.8 + lunge * 0.2} seed={8} />
+      <Aura variant="galaxy" cx={xL + 130} cy={650} intensity={(0.8 + lungeL * 0.2) * (1 - clearSky * 0.75)} seed={5} />
+      <Aura variant="solar" cx={xR + 130} cy={650} intensity={0.8 + lunge * 0.2 + clearSky * 0.6} seed={8} />
       <SpeedLines intensity={lunge * 0.9} seed={9} />
 
       {/* 3-frame sepia flashback */}
@@ -2096,7 +2098,7 @@ export const Scene5: React.FC = () => {
         </AbsoluteFill>
       )}
 
-      {/* the instant before contact — white light engulfs the screen */}
+      {/* Spain's contact — white light engulfs the screen */}
       <AbsoluteFill style={{ backgroundColor: '#fff', opacity: flash }} />
 
       <KineticText
@@ -2104,7 +2106,7 @@ export const Scene5: React.FC = () => {
         lines={[
           { text: '"Even the smoke could not hide what destiny had already written."', at: 74, hold: 24 },
           { text: '"One last dance."', at: 100, hold: 15 },
-          { text: '"One new beginning."', at: 117, hold: 16 },
+          { text: '"Destiny wears red."', at: 117, hold: 16 },
         ]}
       />
 
@@ -2116,6 +2118,9 @@ export const Scene5: React.FC = () => {
           <div style={{ width: 520, height: 2, background: '#d4af37', margin: '26px auto' }} />
           <div style={{ fontSize: 36, letterSpacing: '0.5em', textIndent: '0.5em', color: '#d4af37' }}>
             FIFA WORLD CUP FINAL
+          </div>
+          <div style={{ marginTop: 40, fontSize: 34, letterSpacing: '0.42em', textIndent: '0.42em', color: '#ff5a3c' }}>
+            SPAIN — WORLD CHAMPIONS
           </div>
         </div>
       </AbsoluteFill>
@@ -2169,7 +2174,7 @@ npx remotion still Trailer out/check/s5-f820.png --frame=820
 npx remotion still Trailer out/check/s5-f860.png --frame=860
 npx remotion still Trailer out/check/s5-f895.png --frame=895
 ```
-Expected: five PNGs. Inspect: f770 slow-mo standoff, ball hanging center; f791 sepia flashback frame; f820 white flash decaying over figures; f860 clear blue sky + final narration; f895 title cards on black. Fix and re-render as needed.
+Expected: five PNGs. Inspect: f770 slow-mo standoff, ball hanging center; f791 sepia flashback frame; f820 white flash decaying — Spain's figure at the ball, Argentina a half-step short, ball launched skyward; f860 clear blue sky + final narration ("Destiny wears red."), galaxy aura dimmed, solar aura dominant; f895 title cards on black incl. SPAIN — WORLD CHAMPIONS. Fix and re-render as needed.
 
 - [ ] **Step 4: Commit**
 
@@ -2225,7 +2230,7 @@ ffmpeg -y -v error -ss 21.5 -i out/trailer.mp4 -frames:v 1 out/check/final-s4.pn
 ffmpeg -y -v error -ss 28.5 -i out/trailer.mp4 -frames:v 1 out/check/final-s5.png
 ffmpeg -y -v error -ss 29.8 -i out/trailer.mp4 -frames:v 1 out/check/final-titles.png
 ```
-Expected: six PNGs from the actual MP4. Inspect each: S1 smoky stadium, S2 sepia photo, S3 battlefield duel, S4 clearing sky duel, S5 blue sky + narration, titles on black. If anything is off, fix the scene component and re-render.
+Expected: six PNGs from the actual MP4. Inspect each: S1 smoky stadium, S2 sepia photo, S3 battlefield duel, S4 clearing sky duel, S5 blue sky + narration (Spain wins), titles + SPAIN — WORLD CHAMPIONS card on black. If anything is off, fix the scene component and re-render.
 
 - [ ] **Step 5: Commit**
 
