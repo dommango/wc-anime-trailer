@@ -2193,12 +2193,12 @@ git add src/scenes/Scene5.tsx src/Trailer.tsx && git commit -m "feat: scene 5 sl
 - Consumes: everything above.
 - Produces: the deliverable — `out/trailer.mp4`, 30.0 s, 1920×1080, 30 fps, h264 + aac audio.
 
-- [ ] **Step 1: Run the full test suite**
+- [x] **Step 1: Run the full test suite**
 
 Run: `npm test`
 Expected: PASS — all suites green.
 
-- [ ] **Step 2: Regenerate score and render the full video**
+- [x] **Step 2: Regenerate score and render the full video**
 
 Run:
 ```bash
@@ -2206,7 +2206,7 @@ npm run score && npx remotion render Trailer out/trailer.mp4
 ```
 Expected: `score written → …`, render completes 900/900 frames, exit 0, `out/trailer.mp4` exists.
 
-- [ ] **Step 3: Verify container metadata**
+- [x] **Step 3: Verify container metadata**
 
 Run:
 ```bash
@@ -2219,7 +2219,7 @@ Expected:
 - `duration=30.000000` (±0.05 acceptable)
 - audio stream present (`codec_name=aac`)
 
-- [ ] **Step 4: Extract frames from the rendered MP4 and inspect**
+- [x] **Step 4: Extract frames from the rendered MP4 and inspect**
 
 Run:
 ```bash
@@ -2232,7 +2232,7 @@ ffmpeg -y -v error -ss 29.8 -i out/trailer.mp4 -frames:v 1 out/check/final-title
 ```
 Expected: six PNGs from the actual MP4. Inspect each: S1 smoky stadium, S2 sepia photo, S3 battlefield duel, S4 clearing sky duel, S5 blue sky + narration (Spain wins), titles + SPAIN — WORLD CHAMPIONS card on black. If anything is off, fix the scene component and re-render.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add -A && git commit -m "feat: complete 30s trailer render verified (1080p30, h264+aac)"
