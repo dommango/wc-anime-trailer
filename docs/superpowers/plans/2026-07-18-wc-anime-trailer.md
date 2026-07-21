@@ -1781,7 +1781,7 @@ npx remotion still Trailer out/check/s3-f320.png --frame=320
 npx remotion still Trailer out/check/s3-f420.png --frame=420
 npx remotion still Trailer out/check/s3-f539.png --frame=539
 ```
-Expected: four PNGs. Inspect: f300 photo intact + flash; f320 shards mid-flight; f420 both figures with auras (blue galaxy left, gold/crimson lightning right), floating pitch + Earth horizon; f539 shockwave/cracks visible, ball levitating center. Fix and re-render as needed.
+Expected: four PNGs. Inspect: f300 photo intact + flash; f320 shards mid-flight; f420 both figures with auras (blue galaxy left, gold/crimson lightning right), floating pitch + Earth horizon; f539 cracks visible (shockwaves end at local f209), ball levitating center. Fix and re-render as needed.
 
 - [x] **Step 5: Commit**
 
@@ -2226,7 +2226,7 @@ Run:
 ffmpeg -y -v error -ss 2.5 -i out/trailer.mp4 -frames:v 1 out/check/final-s1.png
 ffmpeg -y -v error -ss 7.5 -i out/trailer.mp4 -frames:v 1 out/check/final-s2.png
 ffmpeg -y -v error -ss 14.0 -i out/trailer.mp4 -frames:v 1 out/check/final-s3.png
-ffmpeg -y -v error -ss 21.5 -i out/trailer.mp4 -frames:v 1 out/check/final-s4.png
+ffmpeg -y -v error -ss 21.8 -i out/trailer.mp4 -frames:v 1 out/check/final-s4.png
 ffmpeg -y -v error -ss 28.5 -i out/trailer.mp4 -frames:v 1 out/check/final-s5.png
 ffmpeg -y -v error -ss 29.8 -i out/trailer.mp4 -frames:v 1 out/check/final-titles.png
 ```
